@@ -19,8 +19,11 @@ case class PingGateway() extends HttpRouter {
   def process(context: ActorContext, msg: CamelMessage) = {
     request(msg) match {
       case ("GET", Ping()) =>
+        val format = new java.text.SimpleDateFormat("dd-MM-yyyy")
         for (
-          date <- Future { new Date() }
+          date <- Future {
+            format.format(new Date())
+          }
         ) yield json(date)
       case _ => None
     }

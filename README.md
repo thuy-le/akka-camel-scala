@@ -1,10 +1,24 @@
-scala-camel-akka-seed
-=====================
+# Winbits Proxy (Akka-Camel-Scala)
 
-Multiproject camel-akka basic structure for backend.
+An Akka-Camel based project written in Scala
 
-project: domains
-----------------
+### Installation
+
+- Installl SBT (http://www.scala-sbt.org/release/tutorial/Setup.html)
+- Run test: 
+```sh
+$ cd /project/folder
+$ sbt test
+```
+
+- Run
+```sh
+$ sbt 'project gateways' 'run'
+```
+
+## Project structure
+
+### project: domains
 
 Contains the business logic of the application.
 
