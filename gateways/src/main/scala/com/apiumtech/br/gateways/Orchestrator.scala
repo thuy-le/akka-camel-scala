@@ -1,7 +1,7 @@
 package com.apiumtech.br.gateways
 
 import akka.actor.{ActorSystem, Props}
-import com.apiumtech.br.gateways.http.HttpConsumer
+import com.apiumtech.br.gateways.http.{HttpTransformer, HttpConsumer, HttpProducer}
 import com.apiumtech.br.gateways.ping.PingGateway
 import com.apiumtech.br.gateways.user.UserGateway
 import com.apiumtech.br.gateways.service.ServiceGateway
@@ -13,8 +13,13 @@ import com.apiumtech.br.gateways.service.ServiceGateway
 object Orchestrator {
   def main(args: Array[String]) {
     val system = ActorSystem("winbits-router")
+
+    val httpTransformer = system.actorOf(Props[HttpTransformer])
+    val httpProducer = system.actorOf(Props(classOf[HttpProducer], httpTransformer))
+
     Seq (
-      Props(classOf[HttpConsumer], Seq(UserGateway(), ServiceGateway(), PingGateway()), "netty-http:http://0.0.0.0:8080?matchOnUriPrefix=true")
+      Props(classOf[HttpConsumer], httpProducer, Seq(UserGateway(), ServiceGateway(), PingGateway()), "netty-http:http://0.0.0.0:1339?matchOnUriPrefix=true")
     ).foreach(prop => system.actorOf(prop))
+
   }
 }

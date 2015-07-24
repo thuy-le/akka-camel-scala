@@ -1,6 +1,6 @@
 package com.apiumtech.br.gateways.http
 
-import akka.actor.{ActorContext, ActorLogging}
+import akka.actor.{ActorRef, ActorContext, ActorLogging}
 import akka.camel.{CamelMessage, Consumer}
 import com.apiumtech.br.domains.SafeActor
 import com.apiumtech.br.domains.user.UserRepository
@@ -40,10 +40,11 @@ trait HttpRouter extends HttpSupport {
   def process(context: ActorContext, message: CamelMessage): Option[Future[String]]
 }
 
-case class HttpConsumer(routes: Seq[HttpRouter], endpointUri: String) extends SafeActor with Consumer with ActorLogging with HttpSupport {
+case class HttpConsumer(producer: ActorRef, routes: Seq[HttpRouter], endpointUri: String) extends SafeActor with Consumer with ActorLogging with HttpSupport {
   import scala.concurrent.ExecutionContext.Implicits.global
 
   def safeReceive = sender => {
+    //case msg => producer forward msg
     case msg: CamelMessage =>
       routes.toArray.map(_.process(context, msg)).filter(_.isDefined).map(_.get) match {
         case Array(value) => value.onComplete {
@@ -54,7 +55,7 @@ case class HttpConsumer(routes: Seq[HttpRouter], endpointUri: String) extends Sa
           }
           case _ => sender ! http(404);
         }
-        case _ => sender ! http(404, json(s"Route ${method(msg)} ${uri(msg)} not found."))
+        case _ => producer forward msg
       }
   }
 }

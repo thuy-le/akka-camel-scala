@@ -36,6 +36,7 @@ object BusinessRouterBuild extends Build {
     "org.apache.camel" % "camel-ahc" % camelVersion,
     "org.apache.camel" % "camel-jms" % camelVersion,
     "org.apache.camel" % "camel-netty-http" % camelVersion,
+    "org.apache.camel" % "camel-jetty" % camelVersion,
     "org.apache.camel" % "camel-testng" % camelVersion
   )
 }
