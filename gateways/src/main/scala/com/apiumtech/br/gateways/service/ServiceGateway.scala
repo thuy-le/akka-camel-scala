@@ -3,7 +3,7 @@ package com.apiumtech.br.gateways.service
 import akka.actor.ActorContext
 import akka.camel.CamelMessage
 import akka.pattern.ask
-import com.apiumtech.br.domains.service.{ServiceDTO, ServiceActorService}
+import com.apiumtech.br.domains.service.{ServiceActorService}
 import com.apiumtech.br.domains.service.ServiceActorService.ServiceFound
 import com.apiumtech.br.gateways.http.HttpRouter
 
