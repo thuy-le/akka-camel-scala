@@ -2,7 +2,7 @@
 
 An Akka-Camel based project written in Scala
 
-### Installation
+## Installation
 
 - Installl SBT (http://www.scala-sbt.org/release/tutorial/Setup.html)
 - Run test: 
@@ -22,12 +22,10 @@ $ sbt 'project gateways' 'run'
 
 Contains the business logic of the application.
 
-project: services
------------------
+### project: services
 
 Application services as AKKA actors.
 
-project: gateways
------------------
+### project: gateways
 
 Entry point of the application. In this sample is a HTTP server.
