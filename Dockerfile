@@ -9,8 +9,5 @@ RUN apt-get update && apt-get install sbt -y --force-yes
 
 USER root
 
-# Validation
-CMD ["sbt", "test"]
-
 # Run
-CMD ["sbt", "project gateways", "run"]
+CMD ["sbt", "test", "project gateways", "run"]
