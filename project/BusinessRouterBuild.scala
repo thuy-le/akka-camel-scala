@@ -4,8 +4,8 @@ import Keys._
 object BusinessRouterBuild extends Build {
   lazy val domains = project settings(libraryDependencies ++= Defaults)
   lazy val services = project settings(libraryDependencies ++= Camel ++ Akka ++ Defaults) dependsOn domains
-  lazy val gateways = project settings(libraryDependencies ++= Camel ++ Defaults) dependsOn services
-  
+  lazy val gateways = project settings(libraryDependencies ++= Camel ++ Defaults, mainClass in (Compile, run) := Some("com.apiumtech.br.gateways.Orchestrator")) dependsOn services
+
   /****************************************************************************************/
   lazy val akkaVersion = "2.3.12"
   lazy val camelVersion = "2.15.2"
