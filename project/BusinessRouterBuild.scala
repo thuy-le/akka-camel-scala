@@ -2,9 +2,15 @@ import sbt._
 import Keys._
 
 object BusinessRouterBuild extends Build {
+  lazy val commonSettings = Seq(
+    version := "0.1-SNAPSHOT",
+    organization := "com.example",
+    scalaVersion := "2.10.1"
+  )
+  lazy val root = (project in file(".") ).aggregate(gateways, domains, services)
   lazy val domains = project settings(libraryDependencies ++= Defaults)
   lazy val services = project settings(libraryDependencies ++= Camel ++ Akka ++ Defaults) dependsOn domains
-  lazy val gateways = project settings(libraryDependencies ++= Camel ++ Defaults, mainClass in (Compile, run) := Some("com.apiumtech.br.gateways.Orchestrator")) dependsOn services
+  lazy val gateways = project.settings(commonSettings: _*).settings(libraryDependencies ++= Camel ++ Defaults).dependsOn(services)
 
   /****************************************************************************************/
   lazy val akkaVersion = "2.3.12"

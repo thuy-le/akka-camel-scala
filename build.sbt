@@ -5,8 +5,6 @@ scalaVersion := "2.11.5"
 
 enablePlugins(DockerPlugin)
 
-mainClass in (Compile, run) := Some("com.apiumtech.br.gateways.Orchestrator")
-
 docker <<= (docker dependsOn assembly)
 
 dockerfile in docker := {
