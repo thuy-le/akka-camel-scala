@@ -3,6 +3,8 @@ name := "docker"
 version := "0.1.0"
 scalaVersion := "2.11.5"
 
+exportJars := true
+
 enablePlugins(DockerPlugin)
 
 docker <<= (docker dependsOn assembly)
@@ -16,7 +18,7 @@ dockerfile in docker := {
 		from("java")
 		add(jarFile, jarTargetPath)
 		workDir(appDirPath)
-		entryPoint("java", "-jar", jarTargetPath, "com.apiumtech.br.gateways.Orchestrator")
+		entryPoint("java", "-jar", jarTargetPath)
 	}
 }
 
