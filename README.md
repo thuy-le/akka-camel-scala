@@ -4,9 +4,12 @@ An Akka-Camel based project written in Scala
 
 ## Installation
 
-- Be sure that the winbits-backend-mobile project is running at port 1338
+- Be sure that winbits-backend-mobile is up and running at port 1338
 
-- Installl SBT (http://www.scala-sbt.org/release/tutorial/Setup.html)
+### With SBT
+
+- Install SBT (http://www.scala-sbt.org/release/tutorial/Setup.html)
+
 - Run test: 
 ```sh
 $ cd /project/folder
@@ -18,7 +21,25 @@ $ sbt test
 $ sbt 'project gateways' 'run'
 ```
 
-- Go to: http://localhost:1339/ping
+### With Maven
+
+- Install Maven
+
+- Install and run the project
+```sh
+$ make install
+$ make run
+```
+
+### Dockerize
+
+- Install Maven 
+
+```sh
+$ make dockerize
+```
+
+- The project will be running at port 1339
 
 ## Project structure
 

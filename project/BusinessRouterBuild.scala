@@ -1,45 +1,7 @@
 import sbt._
 import Keys._
-import com.github.retronym.SbtOneJar
-
-import sbtassembly.AssemblyPlugin._ 
 
 object BusinessRouterBuild extends Build {
-
-  // val commonSettings = Seq(
-  //    scalaVersion := "2.11.5",
-  //    version := "0.1",
-  //    crossPaths := false
-  // )
-
-  // lazy val root = Project(
-  //   id = "docker",
-  //   base = file("."),
-  //   settings = commonSettings ++
-  //     Seq(
-  //       run := {
-  //         (run in gateways in Compile).evaluated
-  //       },
-  //       mainClass := {
-  //         (mainClass in gateways in Compile).value
-  //       }
-  //     )
-  // ) dependsOn(domains, services, gateways)
-
-  // lazy val domains = Project(
-  //   id = "domains",
-  //   base = file("domains")
-  // ) settings(libraryDependencies ++= Defaults)
-
-  // lazy val services = Project(
-  //   id = "services",
-  //   base = file("services")
-  // ) settings(libraryDependencies ++= Camel ++ Akka ++ Defaults) dependsOn domains
-
-  // lazy val gateways = Project(
-  //   id = "gateways",
-  //   base = file("gateways")
-  // ) settings(libraryDependencies ++= Camel ++ Defaults) dependsOn services
 
   lazy val root = (project in file(".") ).aggregate(gateways, domains, services).settings(
       run := {
@@ -47,22 +9,15 @@ object BusinessRouterBuild extends Build {
       },
       mainClass := {
         (mainClass in gateways in Compile).value
-      },
-      packageBin := {
-        (packageBin in gateways in Compile).value
       }
     )
 
-  lazy val domains = project.settings(assemblySettings).settings(libraryDependencies ++= Defaults)
-  lazy val services = project.settings(assemblySettings).settings(libraryDependencies ++= Camel ++ Akka ++ Defaults).dependsOn(domains)
-  lazy val gateways = Project(
-    id = "gateways",
-    base = file(".")
-    ).settings(assemblySettings).settings(libraryDependencies ++= Camel ++ Defaults).dependsOn(services)
+  lazy val domains = project.settings(libraryDependencies ++= Defaults)
+  lazy val services = project.settings(libraryDependencies ++= Camel ++ Akka ++ Defaults).dependsOn(domains)
+  lazy val gateways = project.settings(libraryDependencies ++= Camel ++ Defaults).dependsOn(services)
 
   Keys.`package` := {
     (Keys.`package` in (gateways, Compile)).value
-    (Keys.`package` in (root, Compile)).value
   }
 
   /****************************************************************************************/
