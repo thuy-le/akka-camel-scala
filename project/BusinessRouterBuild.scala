@@ -2,10 +2,24 @@ import sbt._
 import Keys._
 
 object BusinessRouterBuild extends Build {
-  lazy val domains = project settings(libraryDependencies ++= Defaults)
-  lazy val services = project settings(libraryDependencies ++= Camel ++ Akka ++ Defaults) dependsOn domains
-  lazy val gateways = project settings(libraryDependencies ++= Camel ++ Defaults) dependsOn services
-  
+
+  lazy val root = (project in file(".") ).aggregate(gateways, domains, services).settings(
+      run := {
+        (run in gateways in Compile).evaluated
+      },
+      mainClass := {
+        (mainClass in gateways in Compile).value
+      }
+    )
+
+  lazy val domains = project.settings(libraryDependencies ++= Defaults)
+  lazy val services = project.settings(libraryDependencies ++= Camel ++ Akka ++ Defaults).dependsOn(domains)
+  lazy val gateways = project.settings(libraryDependencies ++= Camel ++ Defaults).dependsOn(services)
+
+  Keys.`package` := {
+    (Keys.`package` in (gateways, Compile)).value
+  }
+
   /****************************************************************************************/
   lazy val akkaVersion = "2.3.12"
   lazy val camelVersion = "2.15.2"

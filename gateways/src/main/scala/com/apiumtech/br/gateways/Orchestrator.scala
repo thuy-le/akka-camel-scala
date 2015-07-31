@@ -11,14 +11,13 @@ import com.apiumtech.br.gateways.service.ServiceGateway
  * @since 7/17/15.
  */
 object Orchestrator {
-  def main(args: Array[String]) {
-    val system = ActorSystem("winbits-router")
+	def main(args: Array[String]) {
+    	val system = ActorSystem("winbits-proxy-mobile")
 
-    val httpProducer = system.actorOf(Props(classOf[HttpProducer]))
+	    val httpProducer = system.actorOf(Props(classOf[HttpProducer]))
 
-    Seq (
-      Props(classOf[HttpConsumer], httpProducer, Seq(UserGateway(), ServiceGateway(), PingGateway()), "netty-http:http://0.0.0.0:1339?matchOnUriPrefix=true")
-    ).foreach(prop => system.actorOf(prop))
-
-  }
+	    Seq (
+	      Props(classOf[HttpConsumer], httpProducer, Seq(UserGateway(), ServiceGateway(), PingGateway()), "netty-http:http://0.0.0.0:1339?matchOnUriPrefix=true")
+	    ).foreach(prop => system.actorOf(prop))
+    }
 }

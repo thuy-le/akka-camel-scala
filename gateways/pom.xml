@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+      <groupId>com.apiumtech.br</groupId>
+      <artifactId>winbits-proxy-mobile</artifactId>
+      <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>gateways</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+
+  <properties>
+        <akkaVersion>2.3.11</akkaVersion>
+        <slf4jVersion>1.7.10</slf4jVersion>
+        <jacksonVersion>2.6.0</jacksonVersion>
+        <camelVersion>2.15.2</camelVersion>
+        <scalaTestVersion>1.0</scalaTestVersion>
+        <scalaVersion>2.11.5</scalaVersion>
+        <output>../target/</output>
+    </properties>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+        <version>${scalaVersion}</version>
+      </dependency>
+
+        <!-- scalaxml -->
+        <dependency>
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-xml_2.11</artifactId>
+            <version>1.0.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- end scalaxml -->
+
+        <!-- services -->
+        <dependency>
+            <groupId>com.apiumtech.br</groupId>
+            <artifactId>services</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- end service -->
+
+        <!-- log -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4jVersion}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- end log -->
+
+        <!-- scala test -->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest-maven-plugin</artifactId>
+            <version>${scalaTestVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- end scala test -->
+        
+        <!-- camel -->
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-core</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-scala</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-ahc</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-jms</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-netty-http</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-jetty</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-testng</artifactId>
+          <version>${camelVersion}</version>
+          <scope>compile</scope>
+        </dependency>
+
+        <!-- end camel -->
+
+        <!-- akka -->
+            <!-- akka actor -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+            <version>${akkaVersion}</version>
+            <scope>compile</scope>
+        </dependency>
+            <!-- akka camel -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-camel_2.11</artifactId>
+            <version>${akkaVersion}</version>
+            <scope>compile</scope>
+        </dependency>
+            <!-- akka testkit -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-testkit_2.11</artifactId>
+            <version>${akkaVersion}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- end akka -->
+
+        <!-- jackson -->
+            <!-- databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jacksonVersion}</version>
+            <scope>compile</scope>
+        </dependency>
+            <!-- module scala -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-scala_2.10</artifactId>
+            <version>${jacksonVersion}-1</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- end jackson -->
+
+    </dependencies>
+    
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>3.1.6</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <!-- <goal>testCompile</goal> -->
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <args>
+            <!-- work-around for https://issues.scala-lang.org/browse/SI-8358 -->
+            <arg>-nobootcp</arg>
+          </args>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <outputDirectory>${output}</outputDirectory>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>com.apiumtech.br.gateways.Orchestrator</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+  		<plugin>
+  		  <artifactId>maven-assembly-plugin</artifactId>
+  		  <configuration>
+  		  	<archive>
+  				<manifest>
+  					<addClasspath>true</addClasspath>
+  					<mainClass>com.apiumtech.br.gateways.Orchestrator</mainClass>
+  				</manifest>
+  			</archive>
+  		    <descriptorRefs>
+  		      <descriptorRef>jar-with-dependencies</descriptorRef>
+  		    </descriptorRefs>
+  		  </configuration>
+  		</plugin>      
+      <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>install</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${output}/lib</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

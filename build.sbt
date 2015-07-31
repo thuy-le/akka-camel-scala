@@ -1,10 +1,26 @@
-organization := "com.apiumtech"
-name := "winbits-proxy-mobile"
+organization := "test"
+name := "docker"
 version := "0.1.0"
 scalaVersion := "2.11.5"
-maintainer := "apiumtest"
-dockerExposedPorts in Docker := Seq(1339)
-dockerEntrypoint in Docker := Seq("sh", "-c", "CLUSTER_IP=`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1 }'` bin/clustering $*")
-dockerRepository := Some("apiumtest")
-dockerBaseImage := "java"
-enablePlugins(JavaAppPackaging)
+
+exportJars := true
+
+enablePlugins(DockerPlugin)
+
+docker <<= (docker dependsOn assembly)
+
+dockerfile in docker := {
+	val jarFile = (outputPath in assembly).value
+	val appDirPath = "/app"
+	val jarTargetPath = s"$appDirPath/${jarFile.name}"
+
+	new Dockerfile {
+		from("java")
+		add(jarFile, jarTargetPath)
+		workDir(appDirPath)
+		entryPoint("java", "-jar", jarTargetPath)
+	}
+}
+
+buildOptions in docker := BuildOptions(cache = false)
+

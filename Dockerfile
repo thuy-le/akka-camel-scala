@@ -1,13 +1,10 @@
 FROM java
 MAINTAINER apiumtest
-EXPOSE 1339
-ADD . /opt/docker
-WORKDIR /opt/docker
 
-RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
-RUN apt-get update && apt-get install sbt -y --force-yes
+EXPOSE 1338 1339
 
-USER root
+ADD target/. /app/
 
-# Run
-CMD ["sbt", "project gateways", "run"]
+WORKDIR /app
+
+ENTRYPOINT ["java", "-cp", "gateways-1.0-SNAPSHOT.jar", "com.apiumtech.br.gateways.Orchestrator"]
