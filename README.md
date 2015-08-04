@@ -1,10 +1,14 @@
-# Winbits Proxy (Akka-Camel-Scala)
-
-An Akka-Camel based project written in Scala
+# winbits-akka-camel-proxy
+Enterprise Integration for Winbits
 
 ## Installation
 
-- Be sure that winbits-backend-mobile is up and running at port 1338
+### With Docker
+
+```sh
+$ docker run -d --name node-server -p 172.17.42.1:1338:1338 apiumtest/winbits-backend-mobile
+$ docker run -d --name akka-server -p 1339:1339 --link node-server:node-server apiumtest/winbits-proxy-mobile
+```
 
 ### With SBT
 
@@ -18,7 +22,7 @@ $ sbt test
 
 - Run
 ```sh
-$ sbt 'project gateways' 'run'
+$ sbt run
 ```
 
 ### With Maven
@@ -30,16 +34,6 @@ $ sbt 'project gateways' 'run'
 $ make install
 $ make run
 ```
-
-### Dockerize
-
-- Install Maven 
-
-```sh
-$ make dockerize
-```
-
-- The project will be running at port 1339
 
 ## Project structure
 
