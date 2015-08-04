@@ -35,8 +35,9 @@ $ make install
 $ make run
 ```
 
-- Open
-http://localhost:1339
+### Test
+- [http://localhost:1339/ping](http://localhost:1339/ping)
+- [http://localhost:1339/campaigns](http://localhost:1339/campaigns)
 
 ## Project structure
 
