@@ -61,8 +61,8 @@
         <!-- scala test -->
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest-maven-plugin</artifactId>
-            <version>${scalaTestVersion}</version>
+            <artifactId>scalatest_2.11</artifactId>
+            <version>3.0.0-SNAP5</version>
             <scope>test</scope>
         </dependency>
         <!-- end scala test -->

@@ -7,6 +7,11 @@ exportJars := true
 
 enablePlugins(DockerPlugin)
 
+assemblyExcludedJars in assembly := { 
+  val cp = (fullClasspath in assembly).value
+  cp filter {_.data.getName == "compile-0.1.0.jar"}
+}
+
 docker <<= (docker dependsOn assembly)
 
 dockerfile in docker := {
@@ -18,7 +23,7 @@ dockerfile in docker := {
 		from("java")
 		add(jarFile, jarTargetPath)
 		workDir(appDirPath)
-		entryPoint("java", "-jar", jarTargetPath)
+		entryPoint("java", "-cp", jarTargetPath, "com.apiumtech.br.gateways.Orchestrator")
 	}
 }
 

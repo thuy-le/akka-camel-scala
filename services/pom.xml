@@ -1,150 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.apiumtech.br</groupId>
-        <artifactId>winbits-proxy-mobile</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
-    <artifactId>services</artifactId>
-    <name>services</name>
+  <parent>
+    <groupId>com.apiumtech.br</groupId>
+    <artifactId>winbits-proxy-mobile</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+  </parent>
 
-    
-    <profiles>
-        <profile>
-            <id>services-deps</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        <properties>
-            <akkaVersion>2.3.12</akkaVersion>
-            <slf4jVersion>1.7.10</slf4jVersion>
-            <jacksonVersion>2.6.0</jacksonVersion>
-            <camelVersion>2.15.2</camelVersion>
-            <scalaTestVersion>1.0</scalaTestVersion>
-        </properties>
-        <dependencies>
-            <dependency>
-                <groupId>com.apiumtech.br</groupId>
-                <artifactId>domains</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <!-- log -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${slf4jVersion}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- scala test -->
-            <dependency>
-                <groupId>org.scalatest</groupId>
-                <artifactId>scalatest-maven-plugin</artifactId>
-                <version>${scalaTestVersion}</version>
-                <scope>provided</scope>
-            </dependency>
+  <artifactId>services</artifactId>
+  <name>services</name>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-            <!-- akka -->
-                <!-- akka actor -->
-            <dependency>
-                <groupId>com.typesafe.akka</groupId>
-                <artifactId>akka-actor_2.10</artifactId>
-                <version>${akkaVersion}</version>
-                <scope>provided</scope>
-            </dependency>
-                <!-- akka camel -->
-            <dependency>
-                <groupId>com.typesafe.akka</groupId>
-                <artifactId>akka-camel_2.10</artifactId>
-                <version>${akkaVersion}</version>
-                <scope>provided</scope>
-            </dependency>
-                <!-- akka testkit -->
-            <dependency>
-                <groupId>com.typesafe.akka</groupId>
-                <artifactId>akka-testkit_2.10</artifactId>
-                <version>${akkaVersion}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- end akka -->
+  <properties>
+    <akkaVersion>2.3.12</akkaVersion>
+    <slf4jVersion>1.7.10</slf4jVersion>
+    <jacksonVersion>2.6.0</jacksonVersion>
+    <camelVersion>2.15.2</camelVersion>
+    <scalaTestVersion>1.0</scalaTestVersion>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.apiumtech.br</groupId>
+      <artifactId>domains</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <!-- log -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4jVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- scala test -->
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_2.11</artifactId>
+      <version>3.0.0-SNAP5</version>
+      <scope>test</scope>
+    </dependency>
 
-            <!-- jackson -->
-                <!-- databind -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jacksonVersion}</version>
-                <scope>provided</scope>
-            </dependency>
-                <!-- module scala -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-scala_2.10</artifactId>
-                <version>${jacksonVersion}-1</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- end jackson -->
+    <!-- akka -->
+    <!-- akka actor -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-actor_2.10</artifactId>
+      <version>${akkaVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- akka camel -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-camel_2.10</artifactId>
+      <version>${akkaVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- akka testkit -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-testkit_2.10</artifactId>
+      <version>${akkaVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- end akka -->
 
-            <!-- camel -->
+    <!-- jackson -->
+    <!-- databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jacksonVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- module scala -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-scala_2.10</artifactId>
+      <version>${jacksonVersion}-1</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- end jackson -->
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-core</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <!-- camel -->
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-scala</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-ahc</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-scala</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-jms</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-ahc</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-netty-http</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jms</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-jetty</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-netty-http</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-            <dependency>
-              <groupId>org.apache.camel</groupId>
-              <artifactId>camel-testng</artifactId>
-              <version>${camelVersion}</version>
-              <scope>provided</scope>
-            </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jetty</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-            <!-- end camel -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-testng</artifactId>
+      <version>${camelVersion}</version>
+      <scope>provided</scope>
+    </dependency>
 
-        </dependencies>
-    </profile>
-</profiles>
+    <!-- end camel -->
+
+  </dependencies>
+
 
 </project>
