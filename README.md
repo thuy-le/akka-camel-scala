@@ -35,6 +35,9 @@ $ make install
 $ make run
 ```
 
+- Open
+http://localhost:1339
+
 ## Project structure
 
 ### project: domains
