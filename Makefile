@@ -27,7 +27,7 @@ dockerize:
 	mvn clean
 	mvn install
 	docker build -t $(IMAGE) .
-	docker run --rm -it -p 1339:1339 $(IMAGE)
+	docker run -d --name akka-server -p 1339:1339 --link node-server:node-server apiumtest/winbits-proxy-mobile
 
 push-image:
 	docker push $(IMAGE)
