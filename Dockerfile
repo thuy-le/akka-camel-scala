@@ -1,10 +1,16 @@
-FROM java
+FROM maven
 MAINTAINER apiumtest
 
-EXPOSE 1338 1339
+EXPOSE 1339
 
-ADD target/. /app/
+ADD . /usr/share/winbits
 
-WORKDIR /app
+WORKDIR /usr/share/winbits
 
-ENTRYPOINT ["java", "-cp", "gateways-1.0-SNAPSHOT.jar", "com.apiumtech.br.gateways.Orchestrator"]
+USER root
+
+RUN mvn clean
+
+RUN mvn install
+
+ENTRYPOINT ["java", "-cp", "target/gateways-1.0-SNAPSHOT.jar", "com.apiumtech.br.gateways.Orchestrator"]
