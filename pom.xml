@@ -1,92 +1,273 @@
-<project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- model version -->
   <modelVersion>4.0.0</modelVersion>
+
+  <!-- project definition -->
   <groupId>com.apiumtech.br</groupId>
   <artifactId>winbits-proxy-mobile</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <!-- project module definition -->
   <modules>
     <module>domains</module>
     <module>services</module>
     <module>gateways</module>
   </modules>
 
-  <profiles>
-    <profile>
-      <id>scala-2.11</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <scalaVersion>2.11.6</scalaVersion>
-      </properties>
-      <dependencies>
-          <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scalaVersion}</version>
-          </dependency>
-      </dependencies>
-    </profile>
-  </profiles>
+  <!-- properties -->
+  <properties>
+    <scalaVersion>2.11.6</scalaVersion>
+    <scalaBinaryVersion>2.11</scalaBinaryVersion>
+    <akkaVersion>2.3.12</akkaVersion>
+    <slf4jVersion>1.7.10</slf4jVersion>
+    <jacksonVersion>2.6.0</jacksonVersion>
+    <camelVersion>2.15.2</camelVersion>
+    <scalaTestVersion>1.0</scalaTestVersion>
+  </properties>
+
+  <!-- dependency management -->
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- domains -->
+      <dependency>
+          <groupId>com.apiumtech.br</groupId>
+          <artifactId>domains</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <scope>compile</scope>
+      </dependency>
+      <!-- end domains -->
+
+      <!-- services -->
+      <dependency>
+          <groupId>com.apiumtech.br</groupId>
+          <artifactId>services</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <scope>compile</scope>
+      </dependency>
+      <!-- end services -->
+
+      <!-- scala -->
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+        <version>${scalaVersion}</version>
+      </dependency>
+      <!-- log -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4jVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- scalatest -->
+      <dependency>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest_${scalaBinaryVersion}</artifactId>
+        <version>3.0.0-SNAP5</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest-maven-plugin</artifactId>
+        <version>1.0</version>
+      </dependency>
+
+      <!-- akka -->
+      <!-- akka actor -->
+      <dependency>
+        <groupId>com.typesafe.akka</groupId>
+        <artifactId>akka-actor_${scalaBinaryVersion}</artifactId>
+        <version>${akkaVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- akka camel -->
+      <dependency>
+        <groupId>com.typesafe.akka</groupId>
+        <artifactId>akka-camel_${scalaBinaryVersion}</artifactId>
+        <version>${akkaVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- akka testkit -->
+      <dependency>
+        <groupId>com.typesafe.akka</groupId>
+        <artifactId>akka-testkit_${scalaBinaryVersion}</artifactId>
+        <version>${akkaVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- end akka -->
+
+      <!-- jackson -->
+      <!-- databind -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jacksonVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- module scala -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.module</groupId>
+        <artifactId>jackson-module-scala_${scalaBinaryVersion}</artifactId>
+        <version>${jacksonVersion}-1</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- end jackson -->
+
+      <!-- camel -->
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-core</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-scala</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-ahc</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-jms</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-netty-http</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-jetty</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-testng</artifactId>
+        <version>${camelVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- end camel -->
+    </dependencies>
+
+  </dependencyManagement>
+
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>net.alchim31.maven</groupId>
-        <artifactId>scala-maven-plugin</artifactId>
-        <version>3.1.6</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-              <goal>testCompile</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <args>
-            <!-- work-around for https://issues.scala-lang.org/browse/SI-8358 -->
-            <arg>-nobootcp</arg>
-          </args>
-        </configuration>
-      </plugin>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-jar-plugin</artifactId>
-			<version>2.6</version>
-			<configuration>
-				<archive>
-					<manifest>
-						<addClasspath>true</addClasspath>
-						<mainClass>com.apiumtech.br.TestMain</mainClass>
-					</manifest>
-				</archive>
-			</configuration>
-		</plugin>
-		<plugin>
-		  <artifactId>maven-assembly-plugin</artifactId>
-		  <configuration>
-		  	<archive>
-				<manifest>
-					<addClasspath>true</addClasspath>
-					<mainClass>com.apiumtech.br.TestMain</mainClass>
-				</manifest>
-			</archive>
-		    <descriptorRefs>
-		      <descriptorRef>jar-with-dependencies</descriptorRef>
-		    </descriptorRefs>
-		  </configuration>
-		</plugin>
-    </plugins>
+    <!-- plugin management -->
+    <pluginManagement>
+      <plugins>
+        <!-- disable surefire -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+            <skipTests>true</skipTests>
+          </configuration>
+        </plugin>
+
+        <!-- enable scalatest -->
+        <plugin>
+          <groupId>org.scalatest</groupId>
+          <artifactId>scalatest-maven-plugin</artifactId>
+          <version>1.0</version>
+          <configuration>
+            <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+            <junitxml>.</junitxml>
+            <filereports>WDF TestSuite.txt</filereports>
+          </configuration>
+          <executions>
+            <execution>
+              <id>test</id>
+              <goals>
+                <goal>test</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.3</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>net.alchim31.maven</groupId>
+          <artifactId>scala-maven-plugin</artifactId>
+          <version>3.1.6</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>testCompile</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <args>
+              <!-- work-around for https://issues.scala-lang.org/browse/SI-8358 -->
+              <arg>-nobootcp</arg>
+            </args>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.6</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>com.apiumtech.br.TestMain</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>com.apiumtech.br.TestMain</mainClass>
+              </manifest>
+            </archive>
+            <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+          </configuration>
+        </plugin>
+      </plugins>
+
+    </pluginManagement>
   </build>
 </project>

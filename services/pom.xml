@@ -15,54 +15,43 @@
   <packaging>jar</packaging>
 
   <properties>
-    <akkaVersion>2.3.12</akkaVersion>
-    <slf4jVersion>1.7.10</slf4jVersion>
-    <jacksonVersion>2.6.0</jacksonVersion>
-    <camelVersion>2.15.2</camelVersion>
-    <scalaTestVersion>1.0</scalaTestVersion>
+    <scalaBinaryVersion>2.11</scalaBinaryVersion>
   </properties>
+
   <dependencies>
+
     <dependency>
       <groupId>com.apiumtech.br</groupId>
       <artifactId>domains</artifactId>
-      <version>1.0-SNAPSHOT</version>
     </dependency>
+
     <!-- log -->
     <dependency>
       <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>${slf4jVersion}</version>
-      <scope>provided</scope>
+      <artifactId>slf4j-log4j12</artifactId>
     </dependency>
+
     <!-- scala test -->
     <dependency>
       <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_2.11</artifactId>
-      <version>3.0.0-SNAP5</version>
-      <scope>test</scope>
+      <artifactId>scalatest_${scalaBinaryVersion}</artifactId>
     </dependency>
 
     <!-- akka -->
     <!-- akka actor -->
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-actor_2.10</artifactId>
-      <version>${akkaVersion}</version>
-      <scope>provided</scope>
+      <artifactId>akka-actor_${scalaBinaryVersion}</artifactId>
     </dependency>
     <!-- akka camel -->
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-camel_2.10</artifactId>
-      <version>${akkaVersion}</version>
-      <scope>provided</scope>
+      <artifactId>akka-camel_${scalaBinaryVersion}</artifactId>
     </dependency>
     <!-- akka testkit -->
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-testkit_2.10</artifactId>
-      <version>${akkaVersion}</version>
-      <scope>provided</scope>
+      <artifactId>akka-testkit_${scalaBinaryVersion}</artifactId>
     </dependency>
     <!-- end akka -->
 
@@ -71,15 +60,11 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>${jacksonVersion}</version>
-      <scope>provided</scope>
     </dependency>
     <!-- module scala -->
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
-      <artifactId>jackson-module-scala_2.10</artifactId>
-      <version>${jacksonVersion}-1</version>
-      <scope>provided</scope>
+      <artifactId>jackson-module-scala_${scalaBinaryVersion}</artifactId>
     </dependency>
     <!-- end jackson -->
 
@@ -88,55 +73,64 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-core</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-scala</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-ahc</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jms</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-netty-http</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jetty</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-testng</artifactId>
-      <version>${camelVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <!-- end camel -->
 
   </dependencies>
 
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <plugins>
+      <!-- disable surefire -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+
+      <!-- enable scalatest -->
+      <plugin>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+              <groupId>net.alchim31.maven</groupId>
+              <artifactId>scala-maven-plugin</artifactId>
+            </plugin>
+    </plugins>
+
+
+  </build>
 
 </project>

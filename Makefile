@@ -28,3 +28,6 @@ dockerize:
 	mvn install
 	docker build -t $(IMAGE) .
 	docker run --rm -it -p 1339:1339 $(IMAGE)
+
+push-image:
+	docker push $(IMAGE)
