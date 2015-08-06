@@ -24,6 +24,8 @@ run:
 	java -cp target/*.jar com.apiumtech.br.gateways.Orchestrator
 
 dockerize:
+	mvn clean
+	mvn install
 	docker build -t $(IMAGE) .
 	docker run -d --name akka-server -p 1339:1339 --link node-server:node-server apiumtest/winbits-proxy-mobile
 
