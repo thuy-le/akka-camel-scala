@@ -10,6 +10,10 @@ clean-only:
 install-only:
 	mvn install
 
+install:
+	mvn clean
+	mvn install
+
 run-only:
 	java -cp target/*.jar com.apiumtech.br.gateways.Orchestrator
 
