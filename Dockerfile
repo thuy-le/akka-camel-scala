@@ -11,6 +11,10 @@ USER root
 
 RUN ls
 
+RUN cd target
+
+RUN ls
+
 #RUN export MAVEN_OPTS='-Xmx512m -XX:MaxPermSize=128m'
 
 #RUN mvn clean
