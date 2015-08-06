@@ -9,6 +9,8 @@ WORKDIR /usr/share/winbits
 
 USER root
 
+export MAVEN_OPTS='-Xmx512m -XX:MaxPermSize=128m'
+
 RUN mvn clean
 
 RUN mvn install
