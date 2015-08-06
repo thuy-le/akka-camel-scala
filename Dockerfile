@@ -3,12 +3,12 @@ MAINTAINER apiumtest
 
 EXPOSE 1339
 
-ADD target/. /usr/share/winbits
+ADD target/. /app
 
-WORKDIR /usr/share/winbits
+WORKDIR /app
 
 USER root
 
 RUN ls
 
-ENTRYPOINT ["java", "-cp", "*.jar", "com.apiumtech.br.gateways.Orchestrator"]
+ENTRYPOINT ["java", "-cp", "gateways-1.0-SNAPSHOT.jar", "com.apiumtech.br.gateways.Orchestrator"]
