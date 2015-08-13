@@ -1,0 +1,41 @@
+[
+	{
+		"url": "da5aufqgr64hz.cloudfront.net/Medium/Medium_2015331034_Younique_medium.jpg",
+		"isResize": true,
+		"resize": {
+			"width": 320,
+			"height": 100,
+			"strategy": "fit"
+		}
+	},
+
+	{
+		"url": "da5aufqgr64hz.cloudfront.net/Medium/Medium_2015030749_AX M Medium.jpg",
+		"isResize": true,
+		"resize": {
+			"width": 320,
+			"height": 100,
+			"strategy": "exact"
+		}
+	},
+
+	{
+		"url": "da5aufqgr64hz.cloudfront.net/Medium/Medium_2015410740_Superfoods_medium.jpg",
+		"isResize": true,
+		"resize": {
+			"width": 320,
+			"height": 100,
+			"strategy": "crop"
+		}
+	},
+
+	{
+		"url": "da5aufqgr64hz.cloudfront.net/Medium/Medium_2015110635_664x419-WALLIS.jpg",
+		"isResize": false,
+		"resize": {
+			"width": 100,
+			"height": 100,
+			"strategy": "fit"
+		}
+	}
+]

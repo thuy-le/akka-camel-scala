@@ -15,9 +15,6 @@ install:
 	mvn clean
 	mvn install
 
-run-only:
-	java -cp target/*.jar com.apiumtech.br.gateways.Orchestrator
-
 run:
 	mvn clean
 	mvn install
@@ -29,9 +26,11 @@ docker-build:
 docker-run:
 	docker run -d --name akka-server -p 1339:1339 --link node-server:node-server $(IMAGE)
 
+docker-push:
+	docker push $(IMAGE)
+
 dockerize:
-	docker build -t $(IMAGE) .
-	docker run -d --name akka-server -p 1339:1339 --link node-server:node-server $(IMAGE)
+	docker-build docker-run
 
 push-image:
 	docker push $(IMAGE)

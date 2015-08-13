@@ -1,16 +1,14 @@
-FROM apiumtest/maven
+FROM java
 MAINTAINER apiumtest
 
 EXPOSE 1339
 
-ADD . /app
+ADD target/. /app
 
 WORKDIR /app
 
 USER root
 
-RUN mvn clean
+RUN ls
 
-RUN mvn install
-
-ENTRYPOINT ["java", "-cp", "target/gateways-1.0-SNAPSHOT.jar", "com.apiumtech.br.gateways.Orchestrator"]
+ENTRYPOINT ["java", "-cp", "gateways-1.0-SNAPSHOT.jar", "com.apiumtech.br.gateways.Orchestrator"]

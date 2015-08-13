@@ -1,0 +1,10 @@
+node-server: 
+  image: apiumtest/winbits-backend-mobile
+  ports: 
+    - "1338:1338"
+akka-server:
+  image: apiumtest/winbits-proxy-mobile
+  ports:
+    - "80:1339"
+  links: 
+    - node-server
