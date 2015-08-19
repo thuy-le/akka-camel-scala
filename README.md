@@ -3,41 +3,48 @@ Enterprise Integration for Winbits
 
 ## Installation
 
-### With Docker
-
-```sh
-$ docker run -d --name node-server -p 172.17.42.1:1338:1338 apiumtest/winbits-backend-mobile
-$ docker run -d --name akka-server -p 1339:1339 --link node-server:node-server apiumtest/winbits-proxy-mobile
-```
-
 ### With SBT
 
-- Install SBT (http://www.scala-sbt.org/release/tutorial/Setup.html)
-
-- Run test: 
+- Run test:
 ```sh
-$ cd /project/folder
 $ sbt test
 ```
 
-- Run
+- Launch
 ```sh
 $ sbt run
 ```
 
+- Build && Push Docker Image
+```sh
+$ sbt docker
+$ make docker-push
+```
+
 ### With Maven
 
-- Install Maven
-
-- Install and run the project
+- Run test
 ```sh
-$ make install
+$ mvn test
+```
+
+- Launch
+```sh
 $ make run
 ```
 
-### Test
-- [http://localhost:1339/ping](http://localhost:1339/ping)
-- [http://localhost:1339/campaigns](http://localhost:1339/campaigns)
+- Build && Push Docker Image
+```sh
+$ make docker-build
+$ make docker-push
+```
+
+### Launch from docker images
+```sh
+$ docker-compose up
+```
+
+- The project should be running at port 5000 by default
 
 ## Project structure
 

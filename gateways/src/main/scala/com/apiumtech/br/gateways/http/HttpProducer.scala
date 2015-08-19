@@ -15,7 +15,6 @@ class HttpProducer() extends Actor with Producer with HttpSupport {
   	def endpointUri = "netty-http:http://node-server:1338/?bridgeEndpoint=true"
 
   	override def transformResponse(msg: Any) = {
-      println(msg)
       msg match {
         case f:Failure => {
           sender ! http(404, "{status: 'failure', statusCode: 404}")

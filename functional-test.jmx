@@ -30,8 +30,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">1339</stringProp>
+          <stringProp name="HTTPSampler.domain">52.11.95.222</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -185,7 +185,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/campaigns/1984/department/Mujer/products</stringProp>
+            <stringProp name="HTTPSampler.path">/campaigns/1414/department/Mujer/products</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -196,6 +196,175 @@
             <stringProp name="TestPlan.comments">				</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="200" enabled="true">
+              <stringProp name="BeanShellAssertion.query">if (prev.getResponseCode().equals(&quot;200&quot;) != true) { 
+    Failure = true;
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Product Test Suite" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get-product-by-id" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/product/97228</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="200" enabled="true">
+              <stringProp name="BeanShellAssertion.query">if (prev.getResponseCode().equals(&quot;200&quot;) != true) { 
+    Failure = true;
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get-product-by-type" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/products/1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="200" enabled="true">
+              <stringProp name="BeanShellAssertion.query">if (prev.getResponseCode().equals(&quot;200&quot;) != true) { 
+    Failure = true;
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get-product-by-type-and-department" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/products/2/department/Servicios</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="200" enabled="true">
+              <stringProp name="BeanShellAssertion.query">if (prev.getResponseCode().equals(&quot;200&quot;) != true) { 
+    Failure = true;
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get-product-relation" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/product-relation/83928/department/Unisex/field/verticalMarketing/value/Infantil/product-type/1/noitem/10</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="200" enabled="true">
+              <stringProp name="BeanShellAssertion.query">if (prev.getResponseCode().equals(&quot;200&quot;) != true) { 
+    Failure = true;
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get-recent-viewed" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/recent-viewed/83928</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="TestPlan.comments">				</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+              <collectionProp name="CookieManager.cookies">
+                <elementProp name="__Items" elementType="Cookie" testname="__Items">
+                  <stringProp name="Cookie.value">15849%2C97228%2C33855%2C19941%2C97224%2C91916%2C51548%2C91195%2C89555%2C89549%2C83928</stringProp>
+                  <stringProp name="Cookie.domain">52.11.95.222</stringProp>
+                  <stringProp name="Cookie.path">/recent-viewed/83928</stringProp>
+                  <boolProp name="Cookie.secure">false</boolProp>
+                  <longProp name="Cookie.expires">0</longProp>
+                  <boolProp name="Cookie.path_specified">true</boolProp>
+                  <boolProp name="Cookie.domain_specified">true</boolProp>
+                </elementProp>
+              </collectionProp>
+              <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+            </CookieManager>
+            <hashTree/>
             <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="200" enabled="true">
               <stringProp name="BeanShellAssertion.query">if (prev.getResponseCode().equals(&quot;200&quot;) != true) { 
     Failure = true;

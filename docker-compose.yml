@@ -5,6 +5,6 @@ node-server:
 akka-server:
   image: apiumtest/winbits-proxy-mobile
   ports:
-    - "80:1339"
+    - "5000:1339"
   links: 
     - node-server
