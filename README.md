@@ -1,6 +1,6 @@
 # Akka Camel with Scala
-An example of a Akka Camel project written in Scala
-This example was built base on another project: https://github.com/apiumtech/scala-camel-akka-seed
+- An example of a Akka Camel project written in Scala
+- This example was built base on another project: https://github.com/apiumtech/scala-camel-akka-seed
 
 ## Modified/Included features
 - A producer that will communicate to backend server
