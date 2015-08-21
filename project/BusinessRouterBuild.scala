@@ -74,5 +74,6 @@ object BusinessRouterBuild extends Build {
       .exclude("org.springframework", "spring-aop")
       .exclude("org.springframework", "spring-context")
       .exclude("org.springframework", "spring-beans")
+
   )
 }
